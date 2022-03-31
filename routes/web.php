@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
+})->middleware('isLogin')->name("dashboard");
+
+
+Route::prefix('auth')->group(function () {
+    Route::get('/login', 'App\Http\Controllers\Authentification@login_view')->name('auth.login');
+    Route::post('/login', 'App\Http\Controllers\Authentification@login_post');
 });
