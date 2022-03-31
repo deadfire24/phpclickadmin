@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('isLogin')->name("dashboard");
+Route::get('/', 'App\Http\Controllers\DashboardController@view')->middleware('isLogin')->name("dashboard");
 
 
 Route::prefix('auth')->group(function () {
